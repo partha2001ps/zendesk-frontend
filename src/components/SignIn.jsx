@@ -7,11 +7,14 @@ function SignIn() {
         email: '',
         password: ''
       });
-    const [msg, setMsg] = useState('')
+  const [msg, setMsg] = useState('')
+  const [showactive, setshowactive] = useState('')
+
     const handleSingIn = async (e) => {
         e.preventDefault();
         try {
-            const user = await authInstance.post('/user/signin', singindata)
+          const user = await authInstance.post('/user/signin', singindata)
+          setMsg(user.data.message)
             console.log('login Done', user.data)
             setSingindata({
                 email: '',
@@ -20,7 +23,16 @@ function SignIn() {
         } catch (e) {
             console.log('Error in signin', e);
         }
+  }
+  const handleActiveLink = async () => {
+    try {
+      const email=singindata.email
+      const res = await authInstance.post(`/user/active-link/${email}`);
+      setshowactive(res.data.message)
+    } catch (e) {
+      console.log('Error occurred in Active link', e);
     }
+  };
   return (
     <div className='container'>
           <div className='outside'>
@@ -49,8 +61,10 @@ function SignIn() {
                 />
               </div>
               <br />
-              <button type="submit">Submit</button>
-            </form>
+          <button type="submit">Submit</button>
+          <button onClick={handleActiveLink} className="activate-link-button">Activate Link</button>
+        <p>{showactive }</p>
+        </form>
         <div><p>{msg}</p></div>
         <Link to='/reset-password'>Forget Password</Link>
         <p>If New User Please Register</p>

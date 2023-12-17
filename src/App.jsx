@@ -9,6 +9,7 @@ import MenteeSignin from './components/MenteeSignin'
 import MenteeSignUp from './components/MenteeSignUp'
 import MenteeResetPassword from './components/MenteeResetPassword'
 import MenteeNewPassword from './components/MenteeNewPassword'
+import Active from './components/Active'
 
 function App() {
   return (
@@ -20,8 +21,10 @@ function App() {
           <Route path='/signup' element={<SignUp />} />
           <Route path='/reset-password' element={<PasswordReset />} />
           <Route path='/reset-password/new-password/:OTP' element={<NewPassword />} />
+          <Route path='/activate-account/:activationToken' element={ <Active/>} />
           <Route path='/mentee-signin' element={<MenteeSignin />} />
           <Route path='/mentee-signup' element={<MenteeSignUp />} />
+     
           <Route path='/mentee-reset' element={<MenteeResetPassword />} />
           <Route path='/mentee-new' element={ <MenteeNewPassword/>} />
         </Routes>
