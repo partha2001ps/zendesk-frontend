@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    background-color: beige;
+  }
+  body{
+    margin: 0;
+    padding: 0;
+  }
+  .left-side {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .right-side {
+    margin-left: auto;
+    padding: 20px;
+  }
+  
+  .right-side a {
+    margin-right: 30px;
+    color: #f30404;
+    text-decoration: none;
+  }
+  
+  .right-side a:hover {
+    color: #007bff;
+    box-shadow: #007bff;
+    border: #007bff;
+  }
+  
