@@ -12,7 +12,8 @@ const handleSingIn = async (e) => {
     e.preventDefault();
     try {
         const user = await authInstance.post('/mentee/signin', singindata)
-        console.log('login Done', user.data)
+      console.log('login Done', user.data)
+      setMsg(user.data.message)
         setSingindata({
             email: '',
             password: ''

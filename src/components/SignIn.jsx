@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { authInstance } from '../services/instance';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function SignIn() {
     const [singindata, setSingindata] = useState({
@@ -9,13 +9,15 @@ function SignIn() {
       });
   const [msg, setMsg] = useState('')
   const [showactive, setshowactive] = useState('')
-
+  const navigate=useNavigate()
     const handleSingIn = async (e) => {
         e.preventDefault();
         try {
           const user = await authInstance.post('/user/signin', singindata)
+          sessionStorage.setItem('User', JSON.stringify(user.data));
           setMsg(user.data.message)
-            console.log('login Done', user.data)
+          console.log('login Done', user.data)
+          navigate('/dashboard')
             setSingindata({
                 email: '',
                 password: ''

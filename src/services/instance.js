@@ -11,7 +11,7 @@ const authInstance = axios.create({
   protecdInstance.interceptors.request.use(config => {
     const User = sessionStorage.getItem('User');
     if (User) {
-      const authToken = JSON.parse(User).token;
+      const authToken = JSON.parse(User).Token;
       config.headers['Authorization']=`Bearer ${authToken}`
     }
     return config;
