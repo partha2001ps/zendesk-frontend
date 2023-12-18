@@ -8,34 +8,34 @@ function Dashboard() {
   const [selectedClass, setSelectedClass] = useState(1);
   const[see,setSee]=useState()
   const [task, setTask] = useState({
-                taskTitle:'',
-                frontendsourcecode:'',
-                frontendDepoly:'',
-                backendsourcecode:'',
-                backendDeploy:'',
-                commands:'',
+    taskTitle: '', 
+    frontendsourcecode: '',
+    frontendDepoly: '',
+    backendsourcecode: '',
+    backendDeploy: '',
+    commands: '',
   });
-  const handletask =async (e, title) => {
+
+  const handletask = async (e, title) => {
     e.preventDefault();
-    setTask((pre) => ({
-      ...pre,
-      taskTitle: title
-    }));
-    console.log(task)
     try {
-      const res = await protecdInstance.post('/task', task)
-      setSee(res.data.message)
+      const res = await protecdInstance.post('/task', {
+        ...task,
+        taskTitle: title, 
+      });
+      setSee(res.data.message);
       console.log(res.data.message);
-      setTask({ taskTitle:'',
-      frontendsourcecode:'',
-      frontendDepoly:'',
-      backendsourcecode:'',
-      backendDeploy:'',
-      commands:''})
-   
+      setTask({
+        taskTitle: '', 
+        frontendsourcecode: '',
+        frontendDepoly: '',
+        backendsourcecode: '',
+        backendDeploy: '',
+        commands: '',
+      });
     } catch (e) {
-      console.log(e.response)
- }
+      console.log(e.response);
+    }
   };
   const handleClass = (e, classId) => {
     e.preventDefault();
