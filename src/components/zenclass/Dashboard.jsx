@@ -16,12 +16,12 @@ function Dashboard() {
     commands: '',
   });
 
-  const handletask = async (e, title) => {
+  const handletask = async (e, title,id) => {
     e.preventDefault();
     try {
       const res = await protecdInstance.post('/task', {
         ...task,
-        taskTitle: title, 
+        taskTitle:`Class : ${id} - ${title}`, 
       });
       setSee(res.data.message);
       console.log(res.data.message);
@@ -99,7 +99,7 @@ function Dashboard() {
                     </div>
                     {selectedClass.id <= 4 ? (
                       <>
-                       <form onSubmit={(e) => handletask(e, selectedClass.title)}>
+                       <form onSubmit={(e) => handletask(e, selectedClass.title,selectedClass.id)}>
                           <input type="text" placeholder="Github source code"
                          value={task.frontendsourcecode}
                          onChange={(e) => setTask({ ...task, frontendsourcecode: e.target.value })}
@@ -117,7 +117,7 @@ function Dashboard() {
                       </>
                     ) : (
                       <>
-                         <form onSubmit={(e) => handletask(e, selectedClass.title)}>
+                         <form onSubmit={(e) => handletask(e, selectedClass.title,selectedClass.id)}>
                             <input type="text" placeholder="Frontend source code"
                               value={task.frontendsourcecode}
                               onChange={(e) => setTask({ ...task, frontendsourcecode: e.target.value })}

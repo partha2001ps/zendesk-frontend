@@ -12,6 +12,10 @@ import MenteeNewPassword from './components/MenteeNewPassword'
 import Active from './components/Active'
 import Dashboard from './components/zenclass/Dashboard'
 import Task from './components/zenclass/Task'
+import Syllabus from './components/zenclass/Syllabus'
+import Project from './components/zenclass/Project'
+import Ticket from './components/zenclass/Ticket'
+import CreateTicket from './components/zenclass/CreateTicket'
 
 
 function App() {
@@ -30,7 +34,11 @@ function App() {
           <Route path='/mentee-reset' element={<MenteeResetPassword />} />
           <Route path='/mentee-new' element={<MenteeNewPassword />} />
           <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/task' element={ <Task/>} />
+          <Route path='/task' element={<Task />} />
+          <Route path='/syllabus' element={<Syllabus />} />
+          <Route path='/project' element={<Project />} />
+          <Route path='/ticket' element={<Ticket />} />
+          <Route path='/create' element={ <CreateTicket/>} />
         </Routes>
     </div>
    </Router>
