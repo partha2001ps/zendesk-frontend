@@ -16,6 +16,8 @@ import Syllabus from './components/zenclass/Syllabus'
 import Project from './components/zenclass/Project'
 import Ticket from './components/zenclass/Ticket'
 import CreateTicket from './components/zenclass/CreateTicket'
+import Admin from './components/Mentee/Admin'
+import AssignTickets from './components/Mentee/AssignTickets'
 
 
 function App() {
@@ -38,7 +40,10 @@ function App() {
           <Route path='/syllabus' element={<Syllabus />} />
           <Route path='/project' element={<Project />} />
           <Route path='/ticket' element={<Ticket />} />
-          <Route path='/create' element={ <CreateTicket/>} />
+          <Route path='/create' element={<CreateTicket />} />
+          <Route path='/admin' element=
+            {<Admin />} />
+          <Route path='/myTickets' element={ <AssignTickets/>} />
         </Routes>
     </div>
    </Router>

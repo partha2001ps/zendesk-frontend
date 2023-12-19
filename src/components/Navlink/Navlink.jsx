@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import './nav.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 function Navlink() {
-    const [menu, setMenu] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const navigate=useNavigate()
 
     const handleMenu = () => {
       setMenu((prevMenu) => !prevMenu);
-    };
+  };
+ const handlelogout = () => {
+   sessionStorage.removeItem('User')
+   navigate('/')
+  }
   return (
     <div>  <nav>
     <h2>ZEN CLASS</h2>
@@ -15,7 +20,8 @@ function Navlink() {
               <li><Link to='/ticket'>Ticket</Link></li>
               <li><Link to='/project'>Project</Link></li>
               <li><Link to='/task'>Task</Link></li>
-              <li><Link to='/syllabus'>Syllabus</Link></li>
+        <li><Link to='/syllabus'>Syllabus</Link></li>
+        <li><button onClick={handlelogout}>LogOut</button></li>
     </ul>
       <input id="checkbox" type="checkbox" checked={menu} onChange={handleMenu} />
       <label className="toggle" htmlFor="checkbox">

@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import { authInstance } from '../services/instance';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function MenteeSignin() {
   const [singindata, setSingindata] = useState({
     email: '',
     password: ''
   });
+  const navigate=useNavigate()
 const [msg, setMsg] = useState('')
 const handleSingIn = async (e) => {
     e.preventDefault();
     try {
         const user = await authInstance.post('/mentee/signin', singindata)
       console.log('login Done', user.data)
+      sessionStorage.setItem('Admin', JSON.stringify(user.data));
+      navigate('/admin')
       setMsg(user.data.message)
         setSingindata({
             email: '',
