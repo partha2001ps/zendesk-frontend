@@ -15,9 +15,22 @@ function SignIn() {
         try {
           const user = await authInstance.post('/user/signin', singindata)
           sessionStorage.setItem('User', JSON.stringify(user.data));
+          const storedMenteeId = sessionStorage.getItem('User');
+          const menteeId =JSON.parse( storedMenteeId).user;
+        
           setMsg(user.data.message)
           console.log('login Done', user.data)
-          navigate('/dashboard')
+          console.log(menteeId)
+          if(msg=='Password is incorrect'||msg=='User not found!')
+          {
+            navigate('/signin')
+          }
+          else if (menteeId=='student') {
+            navigate('/dashboard')
+          }
+          else if (menteeId == 'mentee') {
+            navigate('/admin')
+          }
             setSingindata({
                 email: '',
                 password: ''

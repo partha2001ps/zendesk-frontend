@@ -4,12 +4,12 @@ import { authInstance, protecdInstance } from '../../services/instance';
 
 function Admin() {
   const [getTickets, setGetTickets] = useState([]);
-  const storedMenteeId = sessionStorage.getItem('Admin');
-  const menteeId =JSON.parse( storedMenteeId).checkEmail._id;
+  const storedMenteeId = sessionStorage.getItem('User');
+  const menteeId =JSON.parse( storedMenteeId).mentee._id;
 
   const handleData = async () => {
     try {
-      const res = await authInstance.get('/ticket/all');
+      const res = await protecdInstance.get('/ticket/all');
       setGetTickets(res.data);
     } catch (error) {
       console.log(error);

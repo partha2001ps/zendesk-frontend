@@ -68,7 +68,7 @@ function MenteeSignUp() {
         </form>
 
     <p>Already User To LogIn Page Go</p>
-    <Link to='/mentee-signin'>SignIn</Link></div>
+    <Link to='/signin'>SignIn</Link></div>
   </div>
   </div>
   )

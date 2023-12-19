@@ -10,7 +10,7 @@ function Home() {
       </div>
       <div className="right-side">
           <Link to='/signin'>User</Link>
-          <Link to='/mentee-signin'>Mentor</Link>
+          <Link to='/mentee-signup'>Admin</Link>
       </div>
     </div>
   );
