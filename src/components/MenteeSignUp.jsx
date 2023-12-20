@@ -31,7 +31,7 @@ function MenteeSignUp() {
     <div className='signup'>
     <div className='outside'>
      <div className='back'> <form onSubmit={handlesingup} >
-      <h2>ZEN SIGNUP FROM :</h2>
+      <h2 className='title'>ZEN ADMIN FROM :</h2>
       <div>
         <label>Name:</label><br />
         <input
@@ -63,12 +63,12 @@ function MenteeSignUp() {
         />
       </div>
       <br />
-      <button type='submit'>Submit</button>
-      <p>{ mgs}</p>
+      <button className='submit' type='submit'>Submit</button>
+      <p className='message'>{ mgs}</p>
         </form>
 
     <p>Already User To LogIn Page Go</p>
-    <Link to='/signin'>SignIn</Link></div>
+    <Link className='link' to='/signin'>SignIn</Link></div>
   </div>
   </div>
   )

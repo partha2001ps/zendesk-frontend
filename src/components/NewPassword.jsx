@@ -22,7 +22,7 @@ function NewPassword() {
      }
    };
   return (
-    <div className='container'><div className='outside'>
+    <div className='signup'><div className='outside'>
     <form onSubmit={changeNewPassword}>
     <label>New Password</label><br />
     <input
@@ -32,10 +32,10 @@ function NewPassword() {
         setpassword( e.target.value );
       }}
       required
-  />   <br /><br /><button type='submit'>submit</button>
+  />   <br /><br /><button className='submit' type='submit'>submit</button>
   <div><p>{ show}</p></div>
     </form>
-    <Link to='/signin'>Singin</Link>
+    <Link className='link' to='/signin'>Singin</Link>
 </div>
   </div>
   )

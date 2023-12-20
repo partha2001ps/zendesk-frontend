@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { authInstance } from '../services/instance';
+import './login.css'
 
 function SignUp() {
   const [singupdata, setSingupdata] = useState({
@@ -35,9 +36,9 @@ function SignUp() {
     <div className='signup'>
     <div className='outside'>
      <div className='back'> <form onSubmit={handlesingup} >
-      <h2>ZEN SIGNUP FROM :</h2>
-      <div>
-        <label>Name:</label><br />
+      <h2 className='title'>ZEN SIGNUP FROM :</h2>
+      <div className='form-group'>
+        <label className='name'>Name:</label><br />
         <input
           type="text"
           name='firstname'
@@ -46,8 +47,8 @@ function SignUp() {
           required
         />
       </div>
-      <div>
-        <label>Email:</label><br />
+      <div className='form-group'>
+        <label  className='name'>Email:</label><br />
         <input
           type="email"
           name='email'
@@ -56,8 +57,8 @@ function SignUp() {
           required
         />
       </div>
-      <div>
-        <label>Password:</label><br />
+      <div className='form-group'>
+        <label  className='name'>Password:</label><br />
         <input
           type="password"
           name='password'
@@ -67,12 +68,12 @@ function SignUp() {
         />
       </div>
       <br />
-      <button type='submit'>Submit</button>
-      <p>{ mgs}</p>
+      <button className='submit' type='submit'>Submit</button>
+      <p className='message'>{ mgs}</p>
         </form>
         <p className="show-active">{showactive}</p>
     <p>Already User To LogIn Page Go</p>
-    <Link to='/signin'>SignIn</Link></div>
+    <Link className='link' to='/signin'>SignIn</Link></div>
   </div>
   </div>
   )

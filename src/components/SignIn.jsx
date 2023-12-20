@@ -49,9 +49,9 @@ function SignIn() {
     }
   };
   return (
-    <div className='container'>
+    <div className='signup'>
           <div className='outside'>
-            <h2>ZEN USER LOGIN</h2>
+            <h2 className='title'>ZEN USER LOGIN</h2>
             <form onSubmit={handleSingIn} className='form'>
               <div>
                 <label htmlFor="email">Email:</label>
@@ -76,14 +76,14 @@ function SignIn() {
                 />
               </div>
               <br />
-          <button type="submit">Submit</button>
-          <button onClick={handleActiveLink} className="activate-link-button">Activate Link</button>
+          <button className='submit' type="submit">Submit</button>
+         {msg=='Go to your email and click the activation link to login.'?( <><p>To click Active Link or Go to Mail Check it Active link click</p><button  onClick={handleActiveLink} className="activate-link-button">Activate Link</button></>):null}
         <p>{showactive }</p>
         </form>
-        <div><p>{msg}</p></div>
+        <div className='message'><p>{msg}</p></div>
         <Link to='/reset-password'>Forget Password</Link>
         <p>If New User Please Register</p>
-        <Link to='/signup'>SingUp</Link>
+        <Link className='link' to='/signup'>SingUp</Link>
       </div>
         </div>
   )
