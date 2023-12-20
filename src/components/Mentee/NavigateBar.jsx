@@ -8,11 +8,11 @@ function NavigateBar() {
        navigate('/')
     }
   return (
-    <div className="container">
-    <div className="left-side">
+    <div className="nav">
+    <div className="left">
         <p>Zen Desk</p>
     </div>
-      <div className="right-side">
+      <div className="right">
         <Link to='/admin'>All Tickets</Link>
         <Link to='/myTickets'>My Assign Tickets</Link>
         <button onClick={handlelogout}>Logout</button>

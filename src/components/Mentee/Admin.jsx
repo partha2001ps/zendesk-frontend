@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NavigateBar from './NavigateBar';
 import { authInstance, protecdInstance } from '../../services/instance';
-
+import "./mentee.css"
 function Admin() {
   const [getTickets, setGetTickets] = useState([]);
   const storedMenteeId = sessionStorage.getItem('User');
@@ -33,13 +33,13 @@ function Admin() {
   return (
     <div>
       <NavigateBar />
-      <div>
-        <div>
-          <h2>ALL Tickets</h2>
-          <h3>
+      <div className='admin'>
+        <div className='all'>
+          <h2 className='title'>ALL Tickets</h2>
+          <h3 className='title'>
             welcome to our Admin Dashboard
           </h3>
-          {getTickets.length == 0 ? (<><h2>No Ticket Available</h2></>) : (<>
+          {getTickets.length == 0 ? (<><h2 className='no'>No Ticket Available</h2></>) : (<>
             
         <table>
           <thead>
@@ -62,7 +62,7 @@ function Admin() {
                 <td>{ticket.language}</td>
                 <td>
                   {ticket.status === 'Open' ? (
-                    <button onClick={() => handleAssign(ticket._id)}>Assign</button>
+                    <button className='assign' onClick={() => handleAssign(ticket._id)}>Assign</button>
                   ) : (
                     ticket.assignedTo || 'N/A'
                   )}
