@@ -37,7 +37,7 @@ function CreateTicket() {
             const res = await protecdInstance.post('/ticket', ticket)
             setTicket({ title: '', category: '', description: '', language: '' })
             navigate('/ticket')
-            console.log('Ticket submitted:',res.data.message);
+            // console.log('Ticket submitted:',res.data.message);
           }
           catch (e) {
             console.log(e,'create error')

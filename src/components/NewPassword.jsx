@@ -12,9 +12,9 @@ function NewPassword() {
    
      if (match) {
        const OTP = match[1];
-       console.log(OTP)
+      //  console.log(OTP)
        const res = await authInstance.post(`/reset-password/${OTP}`, {password});
-       console.log(res.data);
+      //  console.log(res.data);
        setShow(res.data.meaasge)
        navigate('/')
      } else {

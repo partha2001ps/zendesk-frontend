@@ -16,7 +16,7 @@ function AssignTickets() {
     try {
       const res = await protecdInstance.get(`/mentee/${id}`);
       setGet(res.data);
-      console.log(get)
+      // console.log(get)
     } catch (error) {
       console.log(error);
     }
@@ -28,8 +28,9 @@ handleData();
   return (
     <div><NavigateBar />
       <div>
-      <h2>My Assign Tickets</h2>
-        <table>
+      <div>  <h2>My Assign Tickets</h2>
+          {get.length == 0 ? (<><h2>No  Tickets Assign</h2></>) : (<>
+            <table>
           <thead>
             <tr>
               <th>Title</th>
@@ -53,6 +54,8 @@ handleData();
             ))}
           </tbody>
         </table>
+          </>)}
+          </div>
      </div>
     </div>
   )

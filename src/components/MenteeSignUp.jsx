@@ -12,7 +12,7 @@ function MenteeSignUp() {
   const handlesingup =async (e) => {
     e.preventDefault();
     const user =  await authInstance.post('/mentee/', singupdata)
-    console.log(user.data.message)
+    // console.log(user.data.message)
 
     setSingupdata({ name :'',email:'', password :''
   })
@@ -22,7 +22,7 @@ function MenteeSignUp() {
   useEffect(() => {
     if (mgs === 'user created successfully') {
       const timerId = setTimeout(() => {
-        navigate('/mentee-signin');
+        navigate('/signin');
       }, 3000);
       return () => clearTimeout(timerId);
     }

@@ -9,7 +9,7 @@ function Admin() {
 
   const handleData = async () => {
     try {
-      const res = await protecdInstance.get('/ticket/all');
+      const res = await authInstance.get('/ticket/all');
       setGetTickets(res.data);
     } catch (error) {
       console.log(error);
@@ -18,11 +18,11 @@ function Admin() {
 
     const handleAssign = async (id) => {
         try {
-            const res = await authInstance.patch(`/mentee/${id}/${menteeId}`);
-            console.log(res.data)
+            const res = await protecdInstance.patch(`/mentee/${id}/${menteeId}`);
+            // console.log(res.data)
             handleData()
         } catch (error) {
-          console.log(e)
+          console.log(error)
         }
     }
       
@@ -33,9 +33,14 @@ function Admin() {
   return (
     <div>
       <NavigateBar />
-
       <div>
-        <h2>Tickets</h2>
+        <div>
+          <h2>ALL Tickets</h2>
+          <h3>
+            welcome to our Admin Dashboard
+          </h3>
+          {getTickets.length == 0 ? (<><h2>No Ticket Available</h2></>) : (<>
+            
         <table>
           <thead>
             <tr>
@@ -66,6 +71,9 @@ function Admin() {
             ))}
           </tbody>
         </table>
+          </>)}
+          </div>
+       
       </div>
     </div>
   );

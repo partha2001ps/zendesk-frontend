@@ -24,7 +24,7 @@ function Dashboard() {
         taskTitle:`Class : ${id} - ${title}`, 
       });
       setSee(res.data.message);
-      console.log(res.data.message);
+      // console.log(res.data.message);
       setTask({
         taskTitle: '', 
         frontendsourcecode: '',

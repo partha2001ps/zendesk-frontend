@@ -19,8 +19,8 @@ function SignIn() {
           const menteeId =JSON.parse( storedMenteeId).user;
         
           setMsg(user.data.message)
-          console.log('login Done', user.data)
-          console.log(menteeId)
+          // console.log('login Done', user.data)
+          // console.log(menteeId)
           if(msg=='Password is incorrect'||msg=='User not found!')
           {
             navigate('/signin')

@@ -46,7 +46,8 @@ function Ticket() {
         <button onClick={handleCreateTicket}>+ Create Query</button>
         <h2>All Queries</h2>
         <div>
-          <ul>
+          <div>
+            {view.length==0?(<><h2>No  Quary Created</h2></>):(<> <ul>
             {view.map((info) => (
               <li key={info._id}>
                 <div>
@@ -63,7 +64,9 @@ function Ticket() {
                 <button onClick={() => handleDeleteTicket(info._id)}>Delete</button>
               </li>
             ))}
-          </ul>
+          </ul></>)}
+          </div>
+         
         </div>
       </div>
     </div>

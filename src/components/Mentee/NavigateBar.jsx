@@ -12,7 +12,8 @@ function NavigateBar() {
     <div className="left-side">
         <p>Zen Desk</p>
     </div>
-    <div className="right-side">
+      <div className="right-side">
+        <Link to='/admin'>All Tickets</Link>
         <Link to='/myTickets'>My Assign Tickets</Link>
         <button onClick={handlelogout}>Logout</button>
     </div>

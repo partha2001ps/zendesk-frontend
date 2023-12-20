@@ -18,7 +18,7 @@ function Project() {
     try {
      const res=await protecdInstance.post('/task/',project)
       setSee(res.data.message);
-      console.log(res.data.message);
+      // console.log(res.data.message);
       setProject({
         taskTitle: 'Capstone Project',
         frontendsourcecode: '',

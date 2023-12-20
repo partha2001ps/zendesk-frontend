@@ -12,7 +12,7 @@ function Active() {
         const activationToken = match[1];
         try {
           const res = await authInstance.get(`/user/active/${activationToken}`);
-          console.log('Response:', res);
+          // console.log('Response:', res);
           
           if (res.data) {
             console.log('Activation successful:', res.data);

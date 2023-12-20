@@ -13,7 +13,7 @@ function SignUp() {
   const handlesingup =async (e) => {
     e.preventDefault();
     const user =  await authInstance.post('/user/', singupdata)
-    console.log(user.data.message)
+    // console.log(user.data.message)
 
     const email=singupdata.email
     const res = await authInstance.post(`/user/active-link/${email}`);

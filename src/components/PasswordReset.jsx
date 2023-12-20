@@ -12,7 +12,7 @@ function PasswordReset() {
     e.preventDefault();
     try {
       const res = await authInstance.post('user/reset-password', { email });
-      console.log(res.data);
+      // console.log(res.data);
       setMgs(res.data.message);
 
       if (res.data.message === 'Reset email sent successfully') {

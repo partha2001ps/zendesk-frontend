@@ -50,7 +50,9 @@ function Task() {
       <Navlink />
       <div>
         <h2>All Submit Tasks</h2>
-        <ul>
+        <div>
+          {tasks.length == 0 ? (<><h2>No  Task Submited</h2></>) : (<>
+            <ul>
           {tasks.map((task, index) => (
             <li key={index}>
               {editIndex === index ? (
@@ -109,6 +111,9 @@ function Task() {
             </li>
           ))}
         </ul>
+          </>)}
+          </div>
+      
       </div>
     </div>
   );
