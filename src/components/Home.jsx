@@ -5,7 +5,7 @@ import '../App.css';
 function Home() {
   return (
     <div>
-      <div className="container">
+      <div className="container-f">
         <div className="left-side">
           <p>Zen Desk</p>
         </div>

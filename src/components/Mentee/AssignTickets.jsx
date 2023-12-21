@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import NavigateBar from './NavigateBar'
+import React, { useEffect, useState } from 'react';
+import NavigateBar from './NavigateBar';
 import { protecdInstance } from '../../services/instance';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AssignTickets() {
-  const[get,setGet]=useState([])
+  const [get, setGet] = useState([]);
   const storedMenteeId = sessionStorage.getItem('User');
   const id = JSON.parse(storedMenteeId).mentee._id;
-  
-  const handleEditTicket = async(id) => {
+
+  const handleEditTicket = async (id) => {
     await protecdInstance.put(`mentee/${id}`);
     handleData();
   };
@@ -16,49 +17,64 @@ function AssignTickets() {
     try {
       const res = await protecdInstance.get(`/mentee/${id}`);
       setGet(res.data);
-      // console.log(get)
     } catch (error) {
       console.log(error);
     }
-  }; 
-  
-useEffect(() => {
-handleData();
-}, []);
+  };
+
+  useEffect(() => {
+    handleData();
+  }, []);
+
   return (
-    <div><NavigateBar />
+    <div>
+      <NavigateBar />
       <div>
-      <div>  <h2>My Assign Tickets</h2>
-          {get.length == 0 ? (<><h2>No  Tickets Assign</h2></>) : (<>
-            <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Description</th>
-              <th>Status</th>
-              <th>Language</th>
-              <th>Close Ticket</th>
-            </tr>
-          </thead>
-          <tbody>
-            {get.map((ticket) => (
-              <tr key={ticket._id}>
-                <td>{ticket.title}</td>
-                <td>{ticket.category}</td>
-                <td>{ticket.description}</td>
-                <td>{ticket.status}</td>
-                <td>{ticket.language}</td>
-               <td> <button onClick={() => handleEditTicket(ticket._id)}>Close</button></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-          </>)}
-          </div>
-     </div>
+        <div>
+          <h2 className='title-a text-center m-3 text-black-50  '>My Assigned Tickets</h2>
+          {get.length === 0 ? (
+            <h2 className='no'>No Tickets Assigned</h2>
+          ) : (
+            <>
+              <div className='table-responsive'>
+                <table className='table table-striped table-bordered'>
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Category</th>
+                      <th>Description</th>
+                      <th>Status</th>
+                      <th>Language</th>
+                      <th>Close Ticket</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {get.map((ticket) => (
+                      <tr key={ticket._id}>
+                        <td>{ticket.title}</td>
+                        <td>{ticket.category}</td>
+                        <td>{ticket.description}</td>
+                        <td>{ticket.status}</td>
+                        <td>{ticket.language}</td>
+                        <td>
+                          <button
+                            onClick={() => handleEditTicket(ticket._id)}
+                            className='btn btn-danger'
+                          >
+                            Close
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default AssignTickets
+export default AssignTickets;

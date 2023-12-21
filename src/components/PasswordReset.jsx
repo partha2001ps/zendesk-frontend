@@ -37,7 +37,7 @@ function PasswordReset() {
             required
           />
           <div>
-            <button className='submit' onClick={handleSendOTP}>Send Reset Link</button>
+            <button className='submit mt-3' onClick={handleSendOTP}>Send Reset Link</button>
             <p className='message'>{mgs}</p>
           </div>
         </div>
