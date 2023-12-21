@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navlink from '../Navlink/Navlink';
 import { protecdInstance } from '../../services/instance';
+import { useNavigate } from 'react-router-dom';
 
 function Project() {
   const [project, setProject] = useState({
@@ -12,7 +13,7 @@ function Project() {
     commands: '',
   });
   const [see, setSee] = useState('');
-
+  const navigate = useNavigate();
   const handleProject = async (e) => {
     e.preventDefault();
     try {
@@ -29,6 +30,7 @@ function Project() {
       });
     } catch (e) {
       console.error(e);
+      navigate('/signin')
     }
   };
   const projectDetails = {

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Navlink from '../Navlink/Navlink';
 import { protecdInstance } from '../../services/instance';
+import { useNavigate } from 'react-router-dom';
 
 function Task() {
   const [tasks, setTasks] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [update, setUpdate] = useState({});
-  
+  const navigate=useNavigate()
   const initializeUpdateState = (task) => {
     setUpdate({
       frontendsourcecode: task.frontendsourcecode || '',
@@ -22,6 +23,7 @@ function Task() {
       setTasks(res.data.tasks);
     } catch (error) {
       console.error('Error fetching tasks:', error);
+      navigate('/signin')
     }
   };
 

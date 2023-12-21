@@ -40,7 +40,8 @@ function CreateTicket() {
             // console.log('Ticket submitted:',res.data.message);
           }
           catch (e) {
-            console.log(e,'create error')
+            console.log(e, 'create error')
+            navigate('/signin')
           }
         } else {
           alert('Please fill in all required fields.');

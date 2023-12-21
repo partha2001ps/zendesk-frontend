@@ -13,6 +13,7 @@ function Ticket() {
       setView(res.data);
     } catch (error) {
       console.error('Error fetching tickets:', error);
+      navigate('/signin')
     }
   };
 
@@ -32,6 +33,7 @@ function Ticket() {
       getTicket();
     } catch (error) {
       console.error('Error deleting ticket:', error);
+      
     }
   };
 

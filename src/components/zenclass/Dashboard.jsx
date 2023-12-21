@@ -3,6 +3,7 @@ import Navlink from '../Navlink/Navlink';
 import classes from './zenclass';
 import { protecdInstance } from '../../services/instance';
 import './zenclass.css'
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
   const [view, setView] = useState(true);
@@ -16,6 +17,7 @@ function Dashboard() {
     backendDeploy: '',
     commands: '',
   });
+  const navigate = useNavigate()
   const handletask = async (e, title,id) => {
     e.preventDefault();
     try {
@@ -35,6 +37,7 @@ function Dashboard() {
       });
     } catch (e) {
       console.log(e.response);
+      navigate('/signin')
     }
   };
   const handleClass = (e, classId) => {
