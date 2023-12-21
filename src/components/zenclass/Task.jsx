@@ -49,70 +49,73 @@ function Task() {
     <div>
       <Navlink />
       <div>
-        <h2>All Submit Tasks</h2>
+        <h2 className=' text-center m-3 text-uppercase '>All Submit Tasks</h2>
         <div>
-          {tasks.length == 0 ? (<><h2>No  Task Submited</h2></>) : (<>
-            <ul>
-          {tasks.map((task, index) => (
-            <li key={index}>
-              {editIndex === index ? (
-                <div>
-                  <h3>Task Title: {task.taskTitle}</h3>
-                  <p>
-                    FrontEnd source Code:
-                    <input
-                      defaultValue={task.frontendsourcecode}
-                      onChange={(e) => setUpdate({ ...update, frontendsourcecode: e.target.value })}
-                    />
-                  </p>
-                  <p>
-                    FrontEnd Depoly URL:
-                    <input
-                      defaultValue={task.frontendDepoly}
-                      onChange={(e) => setUpdate({ ...update, frontendDepoly: e.target.value })}
-                    />
-                  </p>
-                  {task.backendsourcecode !== '' && (
-                    <p>
-                      BackEnd Source Code:
-                      <input
-                        defaultValue={task.backendsourcecode}
-                        onChange={(e) => setUpdate({ ...update, backendsourcecode: e.target.value })}
-                      />
-                    </p>
+          {tasks.length == 0 ? (<><h2 className='no'>No  Task Submited</h2></>) : (<>
+            <ul >
+              {tasks.map((task, index) => (
+                <li className=' list-unstyled card m-4' key={index}>
+                  {editIndex === index ? (
+                    <div className='card-task'>
+                      <h3 className='m-3'>Task Title: {task.taskTitle}</h3>
+                      <p>
+                        FrontEnd source Code:
+                        <input
+                          defaultValue={task.frontendsourcecode}
+                          onChange={(e) => setUpdate({ ...update, frontendsourcecode: e.target.value })}
+                        />
+                      </p>
+                      <p>
+                        FrontEnd Depoly URL:
+                        <input
+                          defaultValue={task.frontendDepoly}
+                          onChange={(e) => setUpdate({ ...update, frontendDepoly: e.target.value })}
+                        />
+                      </p>
+                      {task.backendsourcecode !== '' && (
+                        <p>
+                          BackEnd Source Code:
+                          <input
+                            defaultValue={task.backendsourcecode}
+                            onChange={(e) => setUpdate({ ...update, backendsourcecode: e.target.value })}
+                          />
+                        </p>
+                      )}
+                      {task.backendDeploy !== '' && (
+                        <p>
+                          BackEnd Depoly URL:
+                          <input
+                            defaultValue={task.backendDeploy}
+                            onChange={(e) => setUpdate({ ...update, backendDeploy: e.target.value })}
+                          />
+                        </p>
+                      )}
+                      <p>Student Commands: {task.commands}</p>
+                      <button className='btn btn-success m-3 card-btn' onClick={() => handleSave(task._id, index)}>Save</button>
+                    </div>
+                  ) : (
+                    <div className='card'>
+                      <h3 className='m-3'>Task Title: {task.taskTitle}</h3>
+                      <div className='card-task'>
+                        <p >FrontEnd source Code: {task.frontendsourcecode}</p>
+                        <p >FrontEnd Depoly URL: {task.frontendDepoly}</p>
+                        {task.backendsourcecode !== '' && (
+                          <p>BackEnd Source Code: {task.backendsourcecode}</p>
+                        )}
+                        {task.backendDeploy !== '' && (
+                          <p>BackEnd Depoly URL: {task.backendDeploy}</p>
+                        )}
+                        <p>Student Commands: {task.commands}</p>
+                        <button className='btn btn-outline-primary card-btn mb-3' onClick={() => handleEdit(index, task)}>Edit</button>
+                      </div>
+                 
+                    </div>
                   )}
-                  {task.backendDeploy !== '' && (
-                    <p>
-                      BackEnd Depoly URL:
-                      <input
-                        defaultValue={task.backendDeploy}
-                        onChange={(e) => setUpdate({ ...update, backendDeploy: e.target.value })}
-                      />
-                    </p>
-                  )}
-                  <p>Student Commands: {task.commands}</p>
-                  <button onClick={() => handleSave(task._id, index)}>Save</button>
-                </div>
-              ) : (
-                <div>
-                  <h3>Task Title: {task.taskTitle}</h3>
-                  <p>FrontEnd source Code: {task.frontendsourcecode}</p>
-                  <p>FrontEnd Depoly URL: {task.frontendDepoly}</p>
-                  {task.backendsourcecode !== '' && (
-                    <p>BackEnd Source Code: {task.backendsourcecode}</p>
-                  )}
-                  {task.backendDeploy !== '' && (
-                    <p>BackEnd Depoly URL: {task.backendDeploy}</p>
-                  )}
-                  <p>Student Commands: {task.commands}</p>
-                  <button onClick={() => handleEdit(index, task)}>Edit</button>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
+                </li>
+              ))}
+            </ul>
           </>)}
-          </div>
+        </div>
       
       </div>
     </div>

@@ -30,9 +30,10 @@ function Active() {
   
   return (
     <div>
-      <div className="your-custom-class">
-      <h3>To below, click the Active button to activate your account</h3>
-      <button onClick={handleactive} id='btn'>Activate</button>
+      <div className="m-5">
+        <h2>Active page for Zen Class </h2>
+      <h3 className='m-3 mx-auto '>To below, click the Active button to activate your account</h3>
+      <button className='btn btn-success mx-auto m-4' onClick={handleactive} id='btn'>Activate</button>
       <p>{info}</p>
     </div>
 </div>

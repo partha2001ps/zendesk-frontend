@@ -15,32 +15,36 @@ function Syllabus() {
   return (
     <div>
       <Navlink />
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Course</th>
-              <th>Syllabus</th>
-              <th>View</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>FSD-MERN</td>
-              <td>
-                <button onClick={handleDownload}>Download</button>
-              </td>
-              <td>
+      <div className='m-5'>
+      <table className='table '>
+        <thead className='thead-dark'>
+          <tr className='table-active'>
+            <th>Course</th>
+            <th>Syllabus</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FSD-MERN</td>
+            <td>
+              <button className='btn btn-outline-secondary' onClick={handleDownload}>
+                Download
+              </button>
+            </td>
+            <td>
               <a
-                  href="https://drive.google.com/file/d/17sW0f9j6vqbJJVdbop1AUMxGGt3mnBJU/view?usp=sharing"
-                  target="_blank" rel="noopener noreferrer"
-                >
-                  View syllabus
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                href="https://drive.google.com/file/d/17sW0f9j6vqbJJVdbop1AUMxGGt3mnBJU/view?usp=sharing"
+                className="btn btn-info"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View syllabus
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       </div>
     </div>
   );

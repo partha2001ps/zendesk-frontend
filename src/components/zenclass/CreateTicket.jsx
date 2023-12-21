@@ -48,8 +48,9 @@ function CreateTicket() {
       };
   return (
     <div><Navlink/><div>
-    <form onSubmit={handleSubmit}>
-      <p>Title:</p>
+      <form onSubmit={handleSubmit} className='create mx-auto '>
+        <h2 className="text-center m-3">Create Quary :</h2>
+      <p className='ti'>Title:</p>
       <select value={ticket.title} onChange={handleTitleChange} required>
         <option value="selectAnyOne">--Select Any one--</option>
         <option value="ZenClassDoubts">Zen class Doubts</option>
@@ -59,7 +60,7 @@ function CreateTicket() {
       </select>
 
       <div>
-        <p>Category:</p>
+        <p className='ti mt-3'>Category:</p>
         {ticket.title === 'ZenClassDoubts' ? (
           <select value={ticket.category} onChange={handleCategoryChange} required>
             <option value="selectAnyOne">--Select Any one--</option>
@@ -99,11 +100,11 @@ function CreateTicket() {
         )}
       </div>
       <div>
-        <label>Description:</label>
+        <label className='ti mt-3 mb-2'>Description:</label>
         <br />
         <textarea
           cols="50"
-          rows="4"
+          rows="3"
           type="text"
           value={ticket.description}
           onChange={handleDescriptionChange}
@@ -111,7 +112,7 @@ function CreateTicket() {
         ></textarea>
       </div>
       <div>
-        <p>Language:</p>
+        <p className='ti mt-3'>Language:</p>
         <select value={ticket.language} onChange={handleLanguageChange} required>
           <option value="selectAnyOne">--Select Any one--</option>
           <option value="Tamil">Tamil</option>
@@ -119,10 +120,12 @@ function CreateTicket() {
           <option value="Hindi">Hindi</option>
         </select>
       </div>
-      <button type="submit">Submit</button>
-
+        <div className='mt-3'>
+          <button className='btn btn-outline-dark btn-create' onClick={handleCreateTicket}>Back</button>
+          <button className='btn btn-outline-success m-3 btn-create' type="submit">Submit</button>
+     </div>
     </form>
-    <button onClick={handleCreateTicket}>Back</button>
+   
   </div></div>
   )
 }
