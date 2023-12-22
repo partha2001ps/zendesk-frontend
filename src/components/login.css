@@ -54,7 +54,7 @@
   }
   
   .submit {
-    background-color: #4caf50;
+    background-color: #6fcc72;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -63,7 +63,7 @@
   }
   
   .submit:hover {
-    background-color: #45a049;
+    background-color: #60eb67;
   }
   
   .message {

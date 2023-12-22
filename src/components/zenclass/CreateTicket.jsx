@@ -103,9 +103,8 @@ function CreateTicket() {
       <div>
         <label className='ti mt-3 mb-2'>Description:</label>
         <br />
-        <textarea
-          cols="50"
-          rows="3"
+          <textarea
+            className='textbox'
           type="text"
           value={ticket.description}
           onChange={handleDescriptionChange}
@@ -121,7 +120,7 @@ function CreateTicket() {
           <option value="Hindi">Hindi</option>
         </select>
       </div>
-        <div className='mt-3'>
+        <div className='mt-3 handlebtn'>
           <button className='btn btn-outline-dark btn-create' onClick={handleCreateTicket}>Back</button>
           <button className='btn btn-outline-success m-3 btn-create' type="submit">Submit</button>
      </div>

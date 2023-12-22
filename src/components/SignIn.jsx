@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { authInstance } from '../services/instance';
 import { Link, useNavigate } from 'react-router-dom';
+import { RotatingLines } from 'react-loader-spinner';
 
 function SignIn() {
     const [singindata, setSingindata] = useState({
@@ -9,15 +10,19 @@ function SignIn() {
       });
   const [msg, setMsg] = useState('')
   const [showactive, setshowactive] = useState('')
-  const navigate=useNavigate()
-    const handleSingIn = async (e) => {
-        e.preventDefault();
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
+
+  const handleSingIn = async (e) => {
+      
+    e.preventDefault();
+    setLoading(true); 
         try {
           const user = await authInstance.post('/user/signin', singindata)
           sessionStorage.setItem('User', JSON.stringify(user.data));
           const storedMenteeId = sessionStorage.getItem('User');
           const menteeId =JSON.parse( storedMenteeId).user;
-        
+          setLoading(false); 
           setMsg(user.data.message)
           // console.log('login Done', user.data)
           // console.log(menteeId)
@@ -76,7 +81,17 @@ function SignIn() {
                 />
               </div>
               <br />
-          <button className='submit' type="submit">Submit</button>
+          <button className='submit' type="submit">{loading ?(<div><RotatingLines
+  visible={true}
+  height="46"
+  width="46"
+  color="white"
+  strokeWidth="5"
+  animationDuration="0.75"
+  ariaLabel="rotating-lines-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  /></div>):(<div>Submit</div>) }</button>
          {msg=='Go to your email and click the activation link to login.'?( <><p>To click Active Link or Go to Mail Check it Active link click</p><button  onClick={handleActiveLink} className="activate-link-button">Activate Link</button></>):null}
         <p>{showactive }</p>
         </form>

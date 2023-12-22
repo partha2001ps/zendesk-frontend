@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { authInstance } from '../services/instance';
+import { RotatingLines } from 'react-loader-spinner';
 
 function MenteeSignUp() {
   const [singupdata, setSingupdata] = useState({
@@ -8,12 +9,15 @@ function MenteeSignUp() {
   });
   const[mgs,setMgs]=useState('')
   const navigate = useNavigate();
-  
-  const handlesingup =async (e) => {
+  const [loading, setLoading] = useState(false);
+
+  const handlesingup = async (e) => {
+    
     e.preventDefault();
+    setLoading(true); 
     const user =  await authInstance.post('/mentee/', singupdata)
     // console.log(user.data.message)
-
+    setLoading(false); 
     setSingupdata({ name :'',email:'', password :''
   })
     setMgs(user.data.message)
@@ -63,7 +67,17 @@ function MenteeSignUp() {
         />
       </div>
       <br />
-      <button className='submit' type='submit'>Submit</button>
+      <button className='submit' type='submit'>{loading ?(<div><RotatingLines
+  visible={true}
+  height="46"
+  width="46"
+  color="white"
+  strokeWidth="5"
+  animationDuration="0.75"
+  ariaLabel="rotating-lines-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  /></div>):(<div>Submit</div>) }</button>
       <p className='message'>{ mgs}</p>
         </form>
 

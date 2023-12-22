@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { authInstance } from '../services/instance';
 import './login.css'
+import { RotatingLines } from 'react-loader-spinner';
+
 
 function SignUp() {
   const [singupdata, setSingupdata] = useState({
@@ -10,14 +12,20 @@ function SignUp() {
   const[mgs,setMgs]=useState('')
   const navigate = useNavigate();
   const [showactive, setshowactive] = useState('')
+  const [loading, setLoading] = useState(false);
+
   
   const handlesingup =async (e) => {
     e.preventDefault();
+    setLoading(true); 
+
     const user =  await authInstance.post('/user/', singupdata)
     // console.log(user.data.message)
 
     const email=singupdata.email
     const res = await authInstance.post(`/user/active-link/${email}`);
+
+    setLoading(false); 
     setshowactive(res.data.message)
     setSingupdata({ name :'',email:'', password :''
   })
@@ -35,7 +43,8 @@ function SignUp() {
   return (
     <div className='signup'>
     <div className='outside'>
-     <div className='back'> <form onSubmit={handlesingup} >
+        <div className='back'> <form onSubmit={handlesingup} >
+          
       <h2 className='title'>ZEN SIGNUP FROM :</h2>
       <div className='form-group'>
         <label className='name'>Name:</label><br />
@@ -68,7 +77,17 @@ function SignUp() {
         />
       </div>
       <br />
-      <button className='submit' type='submit'>Submit</button>
+          <button className='submit' type='submit'>{loading ?(<div><RotatingLines
+  visible={true}
+  height="46"
+  width="46"
+  color="white"
+  strokeWidth="5"
+  animationDuration="0.75"
+  ariaLabel="rotating-lines-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  /></div>):(<div>Submit</div>) }</button>
       <p className='message'>{ mgs}</p>
         </form>
         <p className="show-active">{showactive}</p>
